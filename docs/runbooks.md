@@ -37,8 +37,11 @@ These runbooks cover first bootstrap, Wave 1 validation, pre-Wave-2 readiness, a
 3. Confirm password authentication is disabled.
 4. Confirm Docker and Docker Compose report expected versions.
 5. Confirm Tailscale is connected.
-6. Confirm Coolify, Homepage, and Uptime Kuma are reachable through their intended access paths.
+6. Confirm the Coolify-managed Traefik proxy is active for coolify.getouch.my, portal.getouch.my, and kuma.getouch.my.
 7. Confirm the backup scripts run in a safe, non-secret-driven manner.
+
+Manual Coolify UI step:
+Create the initial root admin account at https://coolify.getouch.my/register.
 
 ### Pre-Wave-2 Readiness
 

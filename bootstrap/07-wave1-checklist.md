@@ -35,8 +35,9 @@ Use this checklist after completing the Wave 1 tasks and again before promoting 
 - [x] Docker daemon config: log rotation + address pool 172.20.0.0/16
 - [x] Tailscale connected and healthy (100.119.174.55)
 - [x] Coolify 4.0.0-beta.473 installed and reachable at http://72.62.254.86:8000
-- [x] Homepage deployed (127.0.0.1:3000, internal only)
-- [x] Uptime Kuma deployed (127.0.0.1:3001, internal only)
+- [x] Homepage deployed (127.0.0.1:3000, exposed via portal.getouch.my through coolify-proxy)
+- [x] Uptime Kuma deployed (127.0.0.1:3001, exposed via kuma.getouch.my through coolify-proxy)
+- [x] Coolify-managed Traefik proxy active on ports 80 and 443
 - [x] /opt/stacks, /opt/backups, /opt/scripts directories created
 - [x] backup scaffold placed at /opt/scripts/backup-volumes.sh
 - [x] verify-wave1.sh result: 24/24 PASS — 2026-04-21
@@ -49,17 +50,22 @@ Use this checklist after completing the Wave 1 tasks and again before promoting 
   safe (file is now `PasswordAuthentication no`).
 - Hostname on server resolves as `srv1606367` (Hostinger default). FQDN
   `getouch.my` is the public name. No action needed for Wave 1.
+- Coolify first-run setup is still incomplete on 2026-04-21: `users=0` and the
+  UI still presents `Create Account`. The approved `coolify-proxy` Traefik path
+  is now active for the final Wave 1 hostnames, but the initial admin account
+  has not been created yet.
+- The unintended Caddy workaround was removed entirely. Wave 1 now uses only
+  the Coolify-managed Traefik proxy.
 
 ## Remaining Manual Steps
 
 These cannot be fully automated and require operator action:
 
-- [ ] Complete Coolify first-run admin setup at http://72.62.254.86:8000
-- [ ] In Coolify: configure domains (home.getouch.my, status.getouch.my, coolify.getouch.my) with TLS
+- [ ] Coolify UI only: create the initial root admin account at https://coolify.getouch.my/register
 - [ ] Add monitors in Uptime Kuma for Wave 1 endpoints
 - [ ] Configure Homepage tiles in /opt/stacks/homepage/config/services.yaml
 - [ ] Backup Coolify env file (/data/coolify/source/.env) to a secure external location
-- [ ] Point DNS records for Wave 1 subdomains to 72.62.254.86
+- [ ] Point DNS-only A records for coolify.getouch.my, portal.getouch.my, and kuma.getouch.my to 72.62.254.86
 
 ## Rollback Or Caution Notes
 

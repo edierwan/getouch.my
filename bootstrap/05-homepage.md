@@ -11,13 +11,13 @@ This phase covers deployment of Homepage and a minimal set of tiles for Wave 1 v
 ## Prerequisites
 
 - Docker baseline completed
-- DNS draft reviewed for home.getouch.my
+- DNS draft reviewed for portal.getouch.my
 - list of initial platform links agreed
 
 ## Implementation Outline
 
 1. deploy Homepage as a Wave 1 utility service
-2. expose it through the intended protected access path
+2. expose it through portal.getouch.my
 3. add initial tiles for Wave 1 services and later-wave placeholders as references only
 
 Suggested initial tiles:
@@ -30,7 +30,8 @@ Suggested initial tiles:
 
 ## Validation Checklist
 
-- Homepage is reachable through the intended path
+- Homepage is reachable through portal.getouch.my
+- Homepage is routed by the Coolify-managed Traefik proxy
 - dashboard renders correctly
 - initial tiles match the current documented platform intent
 

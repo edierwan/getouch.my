@@ -2,7 +2,7 @@
 
 ## Objective
 
-Define the initial subdomain plan for Wave 1 and document which later services are public candidates versus protected or internal candidates.
+Define the final Wave 1 subdomain plan and document later-wave names as placeholders only.
 
 ## Scope
 
@@ -18,9 +18,9 @@ This is a planning document only. It does not imply that every listed service sh
 
 | Subdomain | Intended Service | Wave | Exposure Intent | Notes |
 | --- | --- | --- | --- | --- |
-| coolify.getouch.my | Coolify | Wave 1 | Protected/internal candidate | Prefer restricted admin access, optionally via Tailscale or stricter access controls |
-| home.getouch.my | Homepage | Wave 1 | Protected/internal candidate | Internal operator dashboard, not intended as a public landing page |
-| status.getouch.my | Uptime Kuma | Wave 1 | Protected/internal candidate | Can stay protected at first; public status exposure should be a deliberate later choice |
+| coolify.getouch.my | Coolify | Wave 1 | Public hostname, DNS-only initially | Served by the Coolify-managed Traefik proxy |
+| portal.getouch.my | Homepage | Wave 1 | Public hostname, DNS-only initially | Exposed through the Coolify-managed Traefik proxy |
+| kuma.getouch.my | Uptime Kuma | Wave 1 | Public hostname, DNS-only initially | Exposed through the Coolify-managed Traefik proxy |
 | supabase.getouch.my | Supabase | Wave 2 | Protected/internal candidate | Public exposure should be limited to approved endpoints only, not the whole admin surface |
 | wa.getouch.my | Evolution API | Wave 2 | Public or tightly controlled edge candidate | Exposure depends on webhook and API requirements |
 | chat.getouch.my | Open WebUI | Wave 2 | Protected/internal candidate | Keep private unless a public chat surface is explicitly required |
@@ -31,8 +31,9 @@ This is a planning document only. It does not imply that every listed service sh
 
 - all required draft subdomains are listed
 - Wave 1 services are separated from later-wave services
-- exposure intent is documented without assuming public access
-- protected services remain the default posture
+- final Wave 1 names are coolify.getouch.my, portal.getouch.my, and kuma.getouch.my
+- DNS-only records are the preferred initial validation posture
+- no separate edge proxy is introduced outside Coolify for Wave 1
 
 ## Rollback Or Caution Notes
 
