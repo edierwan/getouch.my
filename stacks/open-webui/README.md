@@ -2,7 +2,7 @@
 
 ## Status
 
-Deferred. Open WebUI is planned for Wave 2 and is not part of the current execution scope.
+Active. Open WebUI is deployed for Wave 2.
 
 ## Intended Role
 
@@ -17,5 +17,7 @@ Deferred. Open WebUI is planned for Wave 2 and is not part of the current execut
 
 ## Notes
 
-- do not treat chat.getouch.my as active deployment scope yet
+- runtime stack path: `/opt/stacks/open-webui`
+- public route: `https://chat.getouch.my`
+- first operational step after deployment is creating the first admin user and connecting a model provider
 - keep future model routing secrets outside git

@@ -2,7 +2,7 @@
 
 ## Status
 
-Deferred. Supabase is planned for Wave 2 and is not implemented in this baseline.
+Active. The self-hosted Supabase stack is deployed for Wave 2.
 
 ## Intended Role
 
@@ -12,15 +12,16 @@ Deferred. Supabase is planned for Wave 2 and is not implemented in this baseline
 
 ## Deployment Intent
 
-- review resource usage and storage requirements first
 - use the supported self-hosted Supabase stack, including its PostgreSQL component, for the initial Wave 2 rollout
 - keep admin interfaces protected
-- reserve `supabase-prd-serapod.getouch.my` for Supabase Studio and admin access
-- reserve `supabase-prd-serapod-kong.getouch.my` for Supabase Kong and API gateway traffic
+- serve `supabase-prd-serapod.getouch.my` as the live Supabase Studio surface
+- serve `supabase-prd-serapod-kong.getouch.my` as the live Supabase Kong and API gateway surface
 - treat a separate PostgreSQL deployment as a later option only if scaling or architecture needs justify it
 - align backup and restore procedures before production use
 
 ## Notes
 
-- document only deployment intent for now
+- runtime stack path: `/opt/stacks/supabase`
+- Studio is publicly reachable through Traefik at `supabase-prd-serapod.getouch.my`
+- Kong is routed correctly at the origin but the current public DNS/proxy record for `supabase-prd-serapod-kong.getouch.my` still needs correction
 - do not commit real service secrets, JWT material, or runtime env files

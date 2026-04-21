@@ -45,16 +45,28 @@
     - Supabase Serapod Production:
         icon: si-supabase
         href: https://supabase-prd-serapod.getouch.my
-        description: Wave 2 placeholder - Studio and admin surface
+        description: Live Supabase Studio and admin surface
+        siteMonitor: https://supabase-prd-serapod.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: supabase-studio
 
 - Communication:
     - Evolution API:
         icon: mdi-whatsapp
         href: https://wa.getouch.my
-        description: Wave 2 placeholder - messaging and webhook flows
+        description: Live messaging and webhook integration layer
+        siteMonitor: https://wa.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: evolution-api
 
 - AI:
     - Open WebUI:
         icon: mdi-robot-outline
         href: https://chat.getouch.my
-        description: Wave 2 placeholder - operator AI access layer
+        description: Live operator AI access layer
+        siteMonitor: https://chat.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: open-webui

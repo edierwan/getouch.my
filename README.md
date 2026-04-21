@@ -63,7 +63,7 @@ Completed implementation scope:
 
 ### Wave 2
 
-Documented but not active yet:
+Activated on 2026-04-22:
 
 - Redis
 - Supabase
@@ -72,7 +72,7 @@ Documented but not active yet:
 
 ### Wave 3
 
-Documented but not active yet:
+Deferred:
 
 - Dify
 - n8n
@@ -98,7 +98,7 @@ The first milestone is a production-safe Wave 1 baseline where:
 - validated Wave 1 public domains are coolify.getouch.my, portal.getouch.my, and kuma.getouch.my
 - Wave 1 uses the Coolify-managed Traefik proxy only
 - Homepage required `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` after exposure through Traefik
-- later services are placeholders with deployment intent only
+- Wave 2 runtime is deployed on the VPS; Supabase Kong still needs one public DNS/proxy correction before the public hostname is fully usable
 - repo content is designed to be safe for manual review, commit, and GitHub sync
 
 ## Wave 1 Outcome
@@ -107,6 +107,14 @@ The first milestone is a production-safe Wave 1 baseline where:
 - Homepage is live at https://portal.getouch.my
 - Uptime Kuma is live at https://kuma.getouch.my
 - direct Coolify admin fallback remains available on port 8000 for controlled recovery use
+
+## Wave 2 Outcome
+
+- Redis is active as an internal service for Wave 2 workloads
+- Supabase Studio is live at https://supabase-prd-serapod.getouch.my
+- Evolution API is live at https://wa.getouch.my
+- Open WebUI is live at https://chat.getouch.my
+- Supabase Kong is deployed at the origin and responding through Traefik, but the current public DNS/proxy record for supabase-prd-serapod-kong.getouch.my still needs correction before browser access is clean
 
 ## Implementation Notes
 
@@ -136,4 +144,4 @@ stacks/
 
 ## Execution Rule
 
-Do not treat later-wave services as active implementation work until explicitly scheduled.
+Do not treat later-wave services beyond the currently approved rollout as active implementation work until explicitly scheduled.

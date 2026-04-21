@@ -2,7 +2,7 @@
 
 ## Status
 
-Deferred. Redis is a later-wave service and is not part of the active Wave 1 implementation scope.
+Active. Redis is deployed as an internal Wave 2 service.
 
 ## Intended Role
 
@@ -12,11 +12,11 @@ Deferred. Redis is a later-wave service and is not part of the active Wave 1 imp
 
 ## Deployment Intent
 
-- evaluate in Wave 2 after the base platform is stable
 - keep persistence, backup, and access requirements explicit before deployment
 - avoid exposing Redis directly to the public internet
 
 ## Notes
 
-- document final placement and retention strategy before enabling persistence
-- do not add live manifests here until Wave 2 is approved
+- deployed container: `wave2-redis`
+- current role: shared internal cache/state service for Evolution API and other Wave 2 workloads
+- no public hostname is assigned

@@ -2,7 +2,7 @@
 
 ## Status
 
-Deferred. Evolution API is a later-wave service and is not active in Wave 1.
+Active. Evolution API is deployed for Wave 2.
 
 ## Intended Role
 
@@ -11,11 +11,11 @@ Deferred. Evolution API is a later-wave service and is not active in Wave 1.
 
 ## Deployment Intent
 
-- evaluate in Wave 2 after base platform validation
 - decide whether public ingress is required for webhook flows
 - review data handling and credential storage before deployment
 
 ## Notes
 
-- no live deployment manifests are included yet
-- treat wa.getouch.my as a draft DNS candidate only
+- runtime stack path: `/opt/stacks/evolution-api`
+- public route: `https://wa.getouch.my`
+- first operational step after deployment is creating and pairing a WhatsApp instance

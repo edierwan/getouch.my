@@ -59,26 +59,23 @@ Validated Wave 1 services and domains:
 Objective:
 Add core platform services that support data, messaging, and AI access layers.
 
-Planned scope:
+Status:
+Runtime deployed on 2026-04-22. Redis, Supabase Studio, Evolution API, and Open WebUI are live. Supabase Kong is deployed at the origin, but the public hostname still needs a DNS/proxy correction.
+
+Implemented scope:
 
 - Redis
 - Supabase self-hosted stack, including its bundled PostgreSQL component for the initial deployment
 - Evolution API
 - Open WebUI
 
-Wave 2 planning notes:
+Wave 2 deployment notes:
 
 - initial Supabase rollout should use the supported self-hosted Supabase stack instead of provisioning a separate standalone PostgreSQL first
-- `supabase-prd-serapod.getouch.my` is reserved for Supabase Studio and admin access
-- `supabase-prd-serapod-kong.getouch.my` is reserved for the Supabase Kong and API gateway surface
+- `supabase-prd-serapod.getouch.my` now serves the live Supabase Studio surface
+- `supabase-prd-serapod-kong.getouch.my` is routed to the live Supabase Kong surface at the origin, but its public DNS/proxy record is still incorrect
 - keep real Supabase secrets, JWT material, SMTP settings, and runtime env files out of git
 - a dedicated external PostgreSQL tier may still be considered later for scaling, isolation, or operational ownership reasons, but it is not an initial Wave 2 requirement
-
-Gate to start:
-
-- Wave 1 validation complete
-- baseline backup scaffold reviewed
-- DNS and access model confirmed
 
 ### Wave 3
 
@@ -101,8 +98,8 @@ Gate to start:
 
 ## Validation Checklist
 
-- Wave 1 implementation is complete and Wave 2/Wave 3 remain deferred
-- deferred services are documented without implying deployment
+- Wave 1 implementation is complete and Wave 2 state is described honestly
+- Wave 3 remains deferred
 - each later wave has explicit gate criteria
 - repository language stays consistent with phased delivery
 
