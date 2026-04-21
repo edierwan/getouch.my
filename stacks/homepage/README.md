@@ -8,7 +8,7 @@ Wave 1 live. Homepage is the operations portal at portal.getouch.my.
 
 - primary operations dashboard for getouch.my
 - landing page for live Wave 1 control-plane services
-- safe placeholder view for planned Wave 2 services
+- safe placeholder landing surface for planned Wave 2 services
 
 ## Config Source
 
@@ -34,5 +34,5 @@ Tracked config files:
 ## Notes
 
 - Homepage is exposed at `portal.getouch.my`
-- `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` is required in the runtime environment
-- live Wave 2 placeholders currently include Supabase Studio, Supabase Kong, Evolution API, and Open WebUI
+- if planned-service domains are routed to Homepage as placeholders, `HOMEPAGE_ALLOWED_HOSTS` must include each of those hostnames
+- current routable Wave 2 placeholder domains are `supabase-prd-serapod.getouch.my`, `wa.getouch.my`, and `chat.getouch.my`
