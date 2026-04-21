@@ -1,7 +1,71 @@
+/* =================================================================
+   getouch Operations Portal — custom.css
+   portal.getouch.my  |  Homepage v1.12.3  |  dark/slate theme
+   ================================================================= */
+
+/* ── Typography ─────────────────────────────────────────────────── */
 body {
-  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.012em;
 }
 
+/* ── Information-widget bar separator ───────────────────────────── */
+#information-widgets {
+  border-bottom-color: rgba(255,255,255,0.06) !important;
+  padding-bottom: 1rem !important;
+}
+
+/* ── Section group headers: uppercase, compact, clearly readable ── */
+.service-group-name,
+.bookmark-group-name {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  opacity: 0.60 !important;
+}
+
+/* ── Service cards: accent border + lift on hover ───────────────── */
+.service-card {
+  border-left: 3px solid transparent !important;
+  transition:
+    border-left-color 0.18s ease,
+    box-shadow        0.16s ease,
+    transform         0.12s ease !important;
+}
+
+.service-card:hover {
+  border-left-color: #60a5fa !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.50) !important;
+}
+
+/* ── Service name ───────────────────────────────────────────────── */
+.service-name {
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+}
+
+/* ── Descriptions: dimmer, smaller, easier to scan ─────────────── */
 .service-description {
-  opacity: 0.82;
+  opacity: 0.52 !important;
+  font-size: 0.70rem !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Wave 2 placeholder cards (no href) visually distinct ───────── */
+.service-card:not(:has(a[href^="http"])) {
+  opacity: 0.55;
+}
+
+.service-card:not(:has(a[href^="http"])):hover {
+  opacity: 0.75;
+  border-left-color: rgba(148,163,184,0.30) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Footer: low visual weight ──────────────────────────────────── */
+#footer {
+  opacity: 0.22 !important;
 }

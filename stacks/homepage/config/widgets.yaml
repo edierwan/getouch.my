@@ -1,12 +1,19 @@
 ---
+- datetime:
+    text_size: xl
+    format:
+      timeStyle: short
+      dateStyle: medium
+      hourCycle: h23
+
 - resources:
-    label: Containers
+    label: Host
     cpu: true
     memory: true
     uptime: true
     refresh: 3000
 
 - resources:
-    label: Storage
+    label: Disk
     disk: /
     refresh: 10000
