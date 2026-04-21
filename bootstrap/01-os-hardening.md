@@ -40,3 +40,19 @@ This phase covers user access, SSH policy, firewall posture, baseline packages, 
 
 - keep the original root session open until deploy SSH access is verified end to end
 - apply SSH daemon changes carefully and test before disconnecting
+
+## Known Issue: Ubuntu 24.04 cloud-init drop-in
+
+Ubuntu 24.04 Hostinger images ship `/etc/ssh/sshd_config.d/50-cloud-init.conf`
+with `PasswordAuthentication yes`. Because OpenSSH processes drop-in files
+alphabetically and the first matching directive wins, this file overrides any
+later drop-in (e.g. `99-hardening.conf`) that sets `PasswordAuthentication no`.
+
+Fix: overwrite that file during hardening:
+
+```bash
+echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/50-cloud-init.conf
+sudo sshd -t && sudo systemctl restart ssh
+```
+
+Verify with: `sudo sshd -T | grep passwordauth` — must show `no`.
