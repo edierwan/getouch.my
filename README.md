@@ -1,146 +1,123 @@
-# getouch.my
-Production infrastructure, deployment, monitoring, and backup for getouch.my
-Target VPS:
-- Host: getouch.my
-- Provider: Hostinger
-- OS: Ubuntu 24.04 LTS
-- Public IP: 72.62.254.86
+# getouch.my Infrastructure
 
-Access method:
-- SSH as root for initial bootstrap
-- Temporary password exists and will be rotated after bootstrap
-- Final setup must create a deploy sudo user, migrate SSH access, and disable root/password login afterward
+This repository is the source of truth for the new getouch.my production VPS bootstrap, deployment baseline, monitoring baseline, backup planning, and operational documentation.
 
-Important:
-- Do not hardcode secrets into repo files
-- Use .env.example only
-- Real secrets must be injected manually or stored outside git
 ## Purpose
 
-This repository is the source of truth for the new `getouch.my` production VPS bootstrap and platform operations.
-
-It exists to make the stack:
+This repo exists to keep the platform:
 
 - repeatable
+- reviewable
 - recoverable
-- portable to another VPS/provider later
-- easier to maintain with clear phases and runbooks
+- portable to another provider later
+- safe to operate in controlled rollout waves
 
-This repo is for infrastructure and platform operations, not for application feature code.
+It is an infrastructure and operations repository, not an application feature repository.
 
----
+## Target Host
 
-## Current target
+- Hostname: getouch.my
+- Public IP: 72.62.254.86
+- Provider: Hostinger
+- OS: Ubuntu 24.04 LTS
+- Role: new primary production platform VPS
+- Bootstrap access: temporary root access for first bootstrap only
 
-- **Primary host:** `getouch.my`
-- **Target OS:** Ubuntu 24.04 LTS
-- **Primary role:** production platform VPS
-- **Goal:** replace the older primary stack gradually, with rollback and restore capability
+Final access policy:
 
----
+- dedicated deploy sudo user
+- SSH key authentication only
+- root SSH login disabled after deploy access is verified
+- password authentication disabled after SSH key access is verified
 
-## Core principles
+## Secrets Rules
 
-1. **Keep the server portable**  
-   We should be able to move to another VPS/provider later without rebuilding from zero.
+- never commit real secrets, passwords, tokens, private keys, or certificates
+- never commit real .env files
+- commit redacted templates and .env.example only
+- inject production values manually or from an external secret store
 
-2. **Backups must be restorable**  
-   Backup without restore testing is not enough.
+## Architecture Direction
 
-3. **Minimize blast radius**  
-   Roll out the platform in waves, not everything at once.
+- this VPS is the new primary production platform host
+- Wave 1 is base platform only
+- heavy AI inference belongs on getouch.co, not on this VPS
+- future migration to another provider must remain straightforward
+- admin and control-plane services should stay protected unless public exposure is explicitly required
 
-4. **Prefer stable, proven components**  
-   Use mature tools with strong operational value.
-
-5. **Protect control plane access**  
-   Admin panels and internal services should not be openly exposed unless necessary.
-
----
-
-## Planned stack
-
-### Control plane
-- Coolify
-- Homepage
-
-### Monitoring
-- Uptime Kuma
-- Netdata
-
-### Data layer
-- Self-hosted Supabase
-- Redis
-
-### Communication
-- Evolution API
-- Telegram service
-
-### AI
-- Open WebUI
-- Remote AI backend on `getouch.co`
-- Optional lightweight local fallback only
-
-### Backup
-- Offsite backup pipeline
-- Restore scripts and runbooks
-
----
-
-## Architecture direction
-
-### Public-facing services
-Examples:
-- main websites
-- selected app frontends
-- public webhook/API endpoints where required
-
-### Protected/internal services
-Examples:
-- Coolify
-- Supabase admin/studio
-- database admin tools
-- internal dashboards
-- AI admin endpoints
-- backup/admin utilities
-
-These should be protected using stricter access controls.
-
----
-
-## Rollout phases
+## Rollout Waves
 
 ### Wave 1
+
+Active execution scope:
+
 - OS hardening
-- Docker
+- deploy user strategy
+- SSH hardening policy
+- Docker Engine and Compose plugin
 - Tailscale
 - Coolify
 - Homepage
 - Uptime Kuma
-- backup scaffold
+- backup scaffold only
 
 ### Wave 2
+
+Documented but not active yet:
+
 - Redis
 - Supabase
 - Evolution API
 - Open WebUI
 
 ### Wave 3
+
+Documented but not active yet:
+
 - Dify
 - n8n
 - LiteLLM
-- advanced logging
-- optional local AI fallback
+- advanced monitoring/logging expansion
+- optional lightweight local AI fallback only if justified
 
----
+## First Milestone
 
-## Repository structure
+The first milestone is a production-safe Wave 1 baseline where:
 
-Planned structure:
+- host access is hardened
+- Docker is installed and standardized
+- Tailscale is available for protected access paths
+- Coolify is ready as the deployment control plane
+- Homepage and Uptime Kuma provide basic operational visibility
+- backup scripts and restore planning exist, without storing real credentials
+
+## Current Status
+
+- repository structure is normalized for docs, bootstrap, stacks, scripts, and env
+- Wave 1 is the only active execution scope
+- later services are placeholders with deployment intent only
+- repo content is designed to be safe for manual review, commit, and GitHub sync
+
+## Repository Structure
 
 ```text
-docs/
+README.md
 bootstrap/
-stacks/
-scripts/
+docs/
 env/
+scripts/
+stacks/
+```
+
+## Key Documents
+
+- docs/phases.md: wave-by-wave execution scope
+- docs/architecture.md: platform constraints and hosting direction
+- docs/host-inventory.md: safe host inventory
+- docs/dns-plan.md: subdomain and exposure draft
+- docs/backup-restore.md: backup and restore strategy
+- docs/runbooks.md: operational procedures for Wave 1 and readiness checks
+
+## Execution Rule
+
+Do not treat later-wave services as active implementation work until explicitly scheduled.
