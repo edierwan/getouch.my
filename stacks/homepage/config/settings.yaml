@@ -1,0 +1,44 @@
+---
+title: getouch Operations Portal
+description: Wave 1 live services and Wave 2 planned control surfaces for getouch.my
+language: en
+target: _blank
+theme: light
+color: slate
+headerStyle: clean
+iconStyle: theme
+hideVersion: true
+disableUpdateCheck: true
+disableCollapse: true
+useEqualHeights: true
+fullWidth: true
+statusStyle: dot
+disableIndexing: true
+showStats: true
+quicklaunch:
+  searchDescriptions: true
+layout:
+  Platform:
+    style: row
+    columns: 2
+    icon: mdi-view-dashboard-outline
+  Monitoring:
+    style: row
+    columns: 2
+    icon: mdi-heart-pulse
+  Infrastructure:
+    style: row
+    columns: 2
+    icon: mdi-server-outline
+  Database:
+    style: row
+    columns: 2
+    icon: mdi-database-outline
+  Communication:
+    style: row
+    columns: 2
+    icon: mdi-message-outline
+  AI:
+    style: row
+    columns: 2
+    icon: mdi-robot-outline

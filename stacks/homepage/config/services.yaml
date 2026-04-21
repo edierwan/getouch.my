@@ -1,0 +1,62 @@
+---
+- Platform:
+    - Operations Portal:
+        icon: mdi-view-dashboard-outline
+        href: https://portal.getouch.my
+        description: Primary operations dashboard for getouch.my
+        siteMonitor: https://portal.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: homepage
+    - Coolify:
+        icon: mdi-rocket-launch-outline
+        href: https://coolify.getouch.my
+        description: Deployment control plane
+        siteMonitor: https://coolify.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: coolify
+
+- Monitoring:
+    - Uptime Kuma:
+        icon: mdi-chart-line
+        href: https://kuma.getouch.my
+        description: Availability monitoring and alerting
+        siteMonitor: https://kuma.getouch.my
+        statusStyle: dot
+        server: local-docker
+        container: uptime-kuma
+
+- Infrastructure:
+    - Primary VPS:
+        icon: mdi-server
+        href: https://coolify.getouch.my
+        description: Hostinger VPS running Ubuntu 24.04 LTS for getouch.my
+    - Coolify Proxy:
+        icon: mdi-connection
+        href: https://coolify.getouch.my
+        description: Traefik edge routing for Wave 1 domains
+        server: local-docker
+        container: coolify-proxy
+
+- Database:
+    - Supabase Studio:
+        icon: si-supabase
+        href: https://supabase-prd-serapod.getouch.my
+        description: Wave 2 planned Studio and admin surface
+    - Supabase Kong:
+        icon: si-supabase
+        href: https://supabase-prd-serapod-kong.getouch.my
+        description: Wave 2 planned API gateway and edge surface
+
+- Communication:
+    - Evolution API:
+        icon: mdi-whatsapp
+        href: https://wa.getouch.my
+        description: Wave 2 placeholder for messaging and webhook flows
+
+- AI:
+    - Open WebUI:
+        icon: mdi-robot-outline
+        href: https://chat.getouch.my
+        description: Wave 2 placeholder for operator AI access

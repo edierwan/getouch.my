@@ -34,6 +34,15 @@ Heavy AI inference belongs on getouch.co, not on this VPS. The getouch.my host m
 - protected candidates: Coolify, Homepage, Uptime Kuma, Supabase admin surfaces, operational dashboards, and backup tooling
 - Tailscale should remain available as a protected access path for administrative traffic where practical
 
+### Wave 2 Supabase Direction
+
+Wave 2 Supabase should start with the supported self-hosted Supabase stack, including its PostgreSQL component, rather than introducing a separate PostgreSQL deployment first. Initial DNS planning separates the admin plane and API plane:
+
+- `supabase-prd-serapod.getouch.my` for Supabase Studio and admin access
+- `supabase-prd-serapod-kong.getouch.my` for Supabase Kong and API gateway traffic
+
+A separate PostgreSQL tier can still be evaluated later if scaling, operational isolation, or data-platform ownership justify it, but that is a future architecture option rather than an initial dependency.
+
 ### Portability Requirement
 
 Future portability to another provider is a hard requirement. Configuration, runbooks, and backups must support rebuilding the base platform without provider lock-in.

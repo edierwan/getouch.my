@@ -62,9 +62,17 @@ Add core platform services that support data, messaging, and AI access layers.
 Planned scope:
 
 - Redis
-- Supabase
+- Supabase self-hosted stack, including its bundled PostgreSQL component for the initial deployment
 - Evolution API
 - Open WebUI
+
+Wave 2 planning notes:
+
+- initial Supabase rollout should use the supported self-hosted Supabase stack instead of provisioning a separate standalone PostgreSQL first
+- `supabase-prd-serapod.getouch.my` is reserved for Supabase Studio and admin access
+- `supabase-prd-serapod-kong.getouch.my` is reserved for the Supabase Kong and API gateway surface
+- keep real Supabase secrets, JWT material, SMTP settings, and runtime env files out of git
+- a dedicated external PostgreSQL tier may still be considered later for scaling, isolation, or operational ownership reasons, but it is not an initial Wave 2 requirement
 
 Gate to start:
 

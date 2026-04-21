@@ -1,0 +1,12 @@
+---
+- resources:
+    label: Containers
+    cpu: true
+    memory: true
+    uptime: true
+    refresh: 3000
+
+- resources:
+    label: Storage
+    disk: /
+    refresh: 10000

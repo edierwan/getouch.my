@@ -18,15 +18,19 @@ This phase covers deployment of Homepage and a minimal set of tiles for Wave 1 v
 
 1. deploy Homepage as a Wave 1 utility service
 2. expose it through portal.getouch.my
-3. add initial tiles for Wave 1 services and later-wave placeholders as references only
+3. use it as the getouch operations portal for Wave 1 live services and Wave 2 placeholders
+4. track the portal config in `stacks/homepage/config/`
 
-Suggested initial tiles:
+Portal groups:
 
 - Coolify
 - Uptime Kuma
-- future Supabase reference
-- future Evolution API reference
-- future Open WebUI reference
+- Platform
+- Monitoring
+- Infrastructure
+- Database
+- Communication
+- AI
 
 ## Validation Checklist
 
@@ -35,6 +39,7 @@ Suggested initial tiles:
 - Homepage host validation accepts portal.getouch.my
 - dashboard renders correctly
 - initial tiles match the current documented platform intent
+- no default sample groups or sample bookmarks remain
 
 ## Rollback Or Caution Notes
 
@@ -46,3 +51,5 @@ Suggested initial tiles:
 Homepage required `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` once it was placed
 behind the Coolify-managed Traefik proxy. Without that allowlist, the app
 returned `Host validation failed` for the final Wave 1 domain.
+
+The repo-tracked Homepage portal templates now live under `stacks/homepage/config/`.
