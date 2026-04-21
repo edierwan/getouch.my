@@ -34,6 +34,7 @@ This is a planning document only. It does not imply that every listed service sh
 - final Wave 1 names are coolify.getouch.my, portal.getouch.my, and kuma.getouch.my
 - DNS-only records are the preferred initial validation posture
 - no separate edge proxy is introduced outside Coolify for Wave 1
+- the three final Wave 1 hostnames have been validated against the VPS on 2026-04-21
 
 ## Rollback Or Caution Notes
 

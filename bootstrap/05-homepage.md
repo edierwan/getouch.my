@@ -32,6 +32,7 @@ Suggested initial tiles:
 
 - Homepage is reachable through portal.getouch.my
 - Homepage is routed by the Coolify-managed Traefik proxy
+- Homepage host validation accepts portal.getouch.my
 - dashboard renders correctly
 - initial tiles match the current documented platform intent
 
@@ -39,3 +40,9 @@ Suggested initial tiles:
 
 - avoid presenting undeployed services as live systems
 - keep Homepage protected if it exposes internal management links
+
+## Execution Note
+
+Homepage required `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` once it was placed
+behind the Coolify-managed Traefik proxy. Without that allowlist, the app
+returned `Host validation failed` for the final Wave 1 domain.

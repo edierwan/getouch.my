@@ -22,6 +22,9 @@ This document sets active scope, deferred scope, and promotion criteria between 
 Objective:
 Establish the hardened base platform on the new VPS.
 
+Status:
+Completed and validated on 2026-04-21.
+
 In scope:
 
 - OS hardening
@@ -44,6 +47,12 @@ Out of scope:
 - n8n
 - LiteLLM
 - advanced Netdata rollout
+
+Validated Wave 1 services and domains:
+
+- Coolify -> coolify.getouch.my
+- Homepage -> portal.getouch.my
+- Uptime Kuma -> kuma.getouch.my
 
 ### Wave 2
 
@@ -84,7 +93,7 @@ Gate to start:
 
 ## Validation Checklist
 
-- Wave 1 is the only active execution scope
+- Wave 1 implementation is complete and Wave 2/Wave 3 remain deferred
 - deferred services are documented without implying deployment
 - each later wave has explicit gate criteria
 - repository language stays consistent with phased delivery

@@ -49,7 +49,7 @@ Final access policy:
 
 ### Wave 1
 
-Active execution scope:
+Completed implementation scope:
 
 - OS hardening
 - deploy user strategy
@@ -94,9 +94,25 @@ The first milestone is a production-safe Wave 1 baseline where:
 ## Current Status
 
 - repository structure is normalized for docs, bootstrap, stacks, scripts, and env
-- Wave 1 is the only active execution scope
+- Wave 1 base platform implementation is complete and validated on 2026-04-21
+- validated Wave 1 public domains are coolify.getouch.my, portal.getouch.my, and kuma.getouch.my
+- Wave 1 uses the Coolify-managed Traefik proxy only
+- Homepage required `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` after exposure through Traefik
 - later services are placeholders with deployment intent only
 - repo content is designed to be safe for manual review, commit, and GitHub sync
+
+## Wave 1 Outcome
+
+- Coolify is live at https://coolify.getouch.my
+- Homepage is live at https://portal.getouch.my
+- Uptime Kuma is live at https://kuma.getouch.my
+- direct Coolify admin fallback remains available on port 8000 for controlled recovery use
+
+## Implementation Notes
+
+- an unapproved Caddy workaround was introduced briefly during troubleshooting and then removed completely
+- the final Wave 1 edge path uses the official Coolify-managed Traefik proxy only
+- Coolify's localhost proxy state required corrective alignment after SSH hardening changed the original bootstrap assumptions
 
 ## Repository Structure
 

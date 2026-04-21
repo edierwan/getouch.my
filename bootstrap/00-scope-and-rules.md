@@ -6,7 +6,7 @@ Bootstrap the new getouch.my VPS in controlled waves until it becomes the new pr
 
 ## Scope
 
-Wave 1 is the only active execution scope in this repository baseline.
+Wave 1 is the completed baseline in this repository. Wave 2 and Wave 3 remain deferred.
 
 In scope now:
 

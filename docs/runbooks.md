@@ -40,8 +40,18 @@ These runbooks cover first bootstrap, Wave 1 validation, pre-Wave-2 readiness, a
 6. Confirm the Coolify-managed Traefik proxy is active for coolify.getouch.my, portal.getouch.my, and kuma.getouch.my.
 7. Confirm the backup scripts run in a safe, non-secret-driven manner.
 
-Manual Coolify UI step:
-Create the initial root admin account at https://coolify.getouch.my/register.
+### Wave 1 Completed State
+
+1. Coolify is reachable at https://coolify.getouch.my.
+2. Homepage is reachable at https://portal.getouch.my.
+3. Uptime Kuma is reachable at https://kuma.getouch.my.
+4. The approved Wave 1 edge path is the Coolify-managed Traefik proxy only.
+
+### Implementation Deviations And Resolution
+
+1. A temporary Caddy workaround was introduced during troubleshooting and removed completely.
+2. Coolify's proxy state required corrective alignment after host hardening changed the original localhost bootstrap assumptions.
+3. Homepage host validation rejected portal.getouch.my until `HOMEPAGE_ALLOWED_HOSTS` was set explicitly.
 
 ### Pre-Wave-2 Readiness
 

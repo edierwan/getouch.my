@@ -38,6 +38,9 @@ Use this checklist after completing the Wave 1 tasks and again before promoting 
 - [x] Homepage deployed (127.0.0.1:3000, exposed via portal.getouch.my through coolify-proxy)
 - [x] Uptime Kuma deployed (127.0.0.1:3001, exposed via kuma.getouch.my through coolify-proxy)
 - [x] Coolify-managed Traefik proxy active on ports 80 and 443
+- [x] coolify.getouch.my validated over HTTPS
+- [x] portal.getouch.my validated over HTTPS
+- [x] kuma.getouch.my validated over HTTPS
 - [x] /opt/stacks, /opt/backups, /opt/scripts directories created
 - [x] backup scaffold placed at /opt/scripts/backup-volumes.sh
 - [x] verify-wave1.sh result: 24/24 PASS — 2026-04-21
@@ -50,22 +53,22 @@ Use this checklist after completing the Wave 1 tasks and again before promoting 
   safe (file is now `PasswordAuthentication no`).
 - Hostname on server resolves as `srv1606367` (Hostinger default). FQDN
   `getouch.my` is the public name. No action needed for Wave 1.
-- Coolify first-run setup is still incomplete on 2026-04-21: `users=0` and the
-  UI still presents `Create Account`. The approved `coolify-proxy` Traefik path
-  is now active for the final Wave 1 hostnames, but the initial admin account
-  has not been created yet.
+- Coolify first-run setup was completed during Wave 1 finalization. Instance
+  FQDN is `https://coolify.getouch.my` and the initial admin account now exists.
 - The unintended Caddy workaround was removed entirely. Wave 1 now uses only
   the Coolify-managed Traefik proxy.
+- Homepage returned `Host validation failed` after first exposure through
+  Traefik. Final fix: set `HOMEPAGE_ALLOWED_HOSTS=portal.getouch.my` in the
+  Homepage runtime environment.
 
-## Remaining Manual Steps
+## Post-Wave-1 Operational Follow-Ups
 
-These cannot be fully automated and require operator action:
+These do not block Wave 1 completion:
 
-- [ ] Coolify UI only: create the initial root admin account at https://coolify.getouch.my/register
 - [ ] Add monitors in Uptime Kuma for Wave 1 endpoints
 - [ ] Configure Homepage tiles in /opt/stacks/homepage/config/services.yaml
 - [ ] Backup Coolify env file (/data/coolify/source/.env) to a secure external location
-- [ ] Point DNS-only A records for coolify.getouch.my, portal.getouch.my, and kuma.getouch.my to 72.62.254.86
+- [ ] Reconfirm Cloudflare DNS-only A records for coolify.getouch.my, portal.getouch.my, and kuma.getouch.my remain pointed to 72.62.254.86
 
 ## Rollback Or Caution Notes
 
