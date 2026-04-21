@@ -34,5 +34,5 @@ Tracked config files:
 ## Notes
 
 - Homepage is exposed at `portal.getouch.my`
-- if planned-service domains are routed to Homepage as placeholders, `HOMEPAGE_ALLOWED_HOSTS` must include each of those hostnames
-- current routable Wave 2 placeholder domains are `supabase-prd-serapod.getouch.my`, `wa.getouch.my`, and `chat.getouch.my`
+- do not route undeployed service domains to Homepage as a shared fallback target
+- planned Wave 2 cards should stay non-clickable until each real destination is deployed
