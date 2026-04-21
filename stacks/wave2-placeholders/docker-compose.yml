@@ -1,0 +1,39 @@
+services:
+  wave2-placeholders:
+    image: nginx:1.27-alpine
+    container_name: wave2-placeholders
+    restart: unless-stopped
+    volumes:
+      - /opt/stacks/wave2-placeholders/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /opt/stacks/wave2-placeholders/site:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=coolify"
+      - "traefik.http.routers.wave2-supabase-http.rule=Host(`supabase-prd-serapod.getouch.my`)"
+      - "traefik.http.routers.wave2-supabase-http.entrypoints=http"
+      - "traefik.http.routers.wave2-supabase-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.wave2-supabase-https.rule=Host(`supabase-prd-serapod.getouch.my`)"
+      - "traefik.http.routers.wave2-supabase-https.entrypoints=https"
+      - "traefik.http.routers.wave2-supabase-https.tls=true"
+      - "traefik.http.routers.wave2-supabase-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wave2-wa-http.rule=Host(`wa.getouch.my`)"
+      - "traefik.http.routers.wave2-wa-http.entrypoints=http"
+      - "traefik.http.routers.wave2-wa-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.wave2-wa-https.rule=Host(`wa.getouch.my`)"
+      - "traefik.http.routers.wave2-wa-https.entrypoints=https"
+      - "traefik.http.routers.wave2-wa-https.tls=true"
+      - "traefik.http.routers.wave2-wa-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wave2-chat-http.rule=Host(`chat.getouch.my`)"
+      - "traefik.http.routers.wave2-chat-http.entrypoints=http"
+      - "traefik.http.routers.wave2-chat-http.middlewares=redirect-to-https@file"
+      - "traefik.http.routers.wave2-chat-https.rule=Host(`chat.getouch.my`)"
+      - "traefik.http.routers.wave2-chat-https.entrypoints=https"
+      - "traefik.http.routers.wave2-chat-https.tls=true"
+      - "traefik.http.routers.wave2-chat-https.tls.certresolver=letsencrypt"
+      - "traefik.http.services.wave2-placeholders.loadbalancer.server.port=80"
+    networks:
+      - coolify
+
+networks:
+  coolify:
+    external: true

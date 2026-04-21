@@ -44,14 +44,17 @@
 - Database:
     - Supabase Serapod Production:
         icon: si-supabase
-        description: Coming soon - Wave 2 Studio and admin surface
+        href: https://supabase-prd-serapod.getouch.my
+        description: Wave 2 placeholder - Studio and admin surface
 
 - Communication:
     - Evolution API:
         icon: mdi-whatsapp
-        description: Coming soon - Wave 2 messaging and webhook flows
+        href: https://wa.getouch.my
+        description: Wave 2 placeholder - messaging and webhook flows
 
 - AI:
     - Open WebUI:
         icon: mdi-robot-outline
-        description: Coming soon - Wave 2 operator AI access layer
+        href: https://chat.getouch.my
+        description: Wave 2 placeholder - operator AI access layer

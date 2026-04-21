@@ -53,13 +53,16 @@ body {
   line-height: 1.4 !important;
 }
 
-/* ── Placeholder cards without destinations stay visibly disabled ─ */
-.service-card:not(:has(a[href^="http"])) {
+/* ── Wave 2 placeholder cards stay dimmed while still clickable ─── */
+.service-card:has(a[href="https://supabase-prd-serapod.getouch.my"]),
+.service-card:has(a[href="https://wa.getouch.my"]),
+.service-card:has(a[href="https://chat.getouch.my"]) {
   opacity: 0.55;
-  cursor: default !important;
 }
 
-.service-card:not(:has(a[href^="http"])):hover {
+.service-card:has(a[href="https://supabase-prd-serapod.getouch.my"]):hover,
+.service-card:has(a[href="https://wa.getouch.my"]):hover,
+.service-card:has(a[href="https://chat.getouch.my"]):hover {
   opacity: 0.75;
   border-left-color: rgba(148,163,184,0.30) !important;
   transform: none !important;

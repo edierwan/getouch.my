@@ -34,5 +34,5 @@ Tracked config files:
 ## Notes
 
 - Homepage is exposed at `portal.getouch.my`
-- do not route undeployed service domains to Homepage as a shared fallback target
-- planned Wave 2 cards should stay non-clickable until each real destination is deployed
+- planned Wave 2 cards may link to distinct placeholder pages, but must never share a wrong fallback target
+- current placeholder destinations are `supabase-prd-serapod.getouch.my`, `wa.getouch.my`, and `chat.getouch.my`
